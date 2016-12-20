@@ -52,7 +52,18 @@ codeunit 70051100 GreetingsManagement
         AddGreetingToList('German', 'Hallo Welt');
         AddGreetingToList('Lithuanian', 'Labas, pasauli!');  
         AddGreetingToList('Afrikaans', 'Hallo wêreld');
-        AddGreetingToList('Bakke Snavvendt', 'Wello Horld');                  
+        AddGreetingToList('Bakke Snavvendt', 'Wello Horld');
+        AddGreetingToList('1337', 'h3ll0 w0rld!');
+        AddGreetingToList('|_337', '|-|3|_|_0 \\/\\/0|2|_|)!');
+        AddGreetingToList('Morse code', '...././.-../.-../---//.--/---/.-./.-../-../-.-.--////');
+        AddGreetingToList('Ballon script', 'Ⓗⓔⓛⓛⓞ Ⓦⓞⓡⓛⓓ!');
+        AddGreetingToList('Braille', '⠠⠓⠑⠇⠇⠕ ⠠⠺⠕⠗⠇⠙⠖');
+        AddGreetingToList('Español', 'Hola Mundo!');
+        AddGreetingToList('Albanian', 'Përshëndetje, Botë!');
+        AddGreetingToList('Turkish', 'Merhaba Dünya!');
+        AddGreetingToList('Tamil', 'வணக்கம்');
+        AddGreetingToList('Sinhalese', 'ආයුබෝවන්');
+        AddGreetingToList('Swahili', 'Salamu, Dunia');                                  
     end;
    
     // Gets a random greeting.
@@ -60,6 +71,6 @@ codeunit 70051100 GreetingsManagement
     begin
         Randomize;
         CreateGreetingsList;
-        exit(GetHelloWorldText(Random(GreetingsCount)));  // Random(int) is 1-based
+        exit(GetHelloWorldText(Random(GreetingsCount)));
     end;
 }
