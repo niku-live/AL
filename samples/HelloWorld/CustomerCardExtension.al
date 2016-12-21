@@ -23,6 +23,13 @@ pageextension 70000021 CustomerCardExtension extends "Customer Card"
                 PromotedCategory = Category8;
                 Promoted = true;
             }
+            action("Greetings")
+            {
+                RunObject = page "Greeting Item List";
+                Image = List;
+                PromotedCategory = Category8;
+                Promoted = true;                
+            }
         }
     }    
 }

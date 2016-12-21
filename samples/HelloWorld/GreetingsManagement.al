@@ -7,7 +7,7 @@
 codeunit 70051100 GreetingsManagement
 {
     var
-        GreetingsList: temporary Record "Standart Text";
+        GreetingsList: Record "Greeting Item" Temporary;
         GreetingsCount: Integer;
 
     // Get a translated 'Hello World' string.
@@ -16,18 +16,21 @@ codeunit 70051100 GreetingsManagement
     begin
         if not GreetingsList.Get(format(GreetingNo)) then
             exit('Hello, World'); // Default to the good old one.
-        exit(GreetingsList.Description);
+        exit(strsubstno('%1: %2', GreetingsList."Greeting Language", GreetingsList."Greeting Text"));
     end;
 
-    local procedure AddGreetingToList(language: Text; greetingText: Text)
+    local procedure AddGreetingToList(language: Text; greetingText: Text);
     begin
         GreetingsCount += 1;
-        GreetingsList.Code := format(GreetingsCount);
-        GreetingsList.Description := strsubstno('%1: %2', language, greetingText);
+        GreetingsList."Greeting No" := GreetingsCount;
+        GreetingsList."Greeting Language" := language;
+        GreetingsList."Greeting Text" := greetingText;
         GreetingsList.Insert;        
     end;
 
-    local procedure CreateGreetingsList()
+    local procedure CreateGreetingsList();
+    var
+        AdditionalGreetingItem: Record "Greeting Item";
     begin
         GreetingsList.DeleteAll;
         GreetingsCount := 0;
@@ -63,7 +66,12 @@ codeunit 70051100 GreetingsManagement
         AddGreetingToList('Turkish', 'Merhaba Dünya!');
         AddGreetingToList('Tamil', 'வணக்கம்');
         AddGreetingToList('Sinhalese', 'ආයුබෝවන්');
-        AddGreetingToList('Swahili', 'Salamu, Dunia');                                  
+        AddGreetingToList('Swahili', 'Salamu, Dunia');
+        AdditionalGreetingItem.Reset;
+        if AdditionalGreetingItem.FindSet(false, false) then
+          repeat
+            AddGreetingToList(AdditionalGreetingItem."Greeting Language", AdditionalGreetingItem."Greeting Text");
+          until AdditionalGreetingItem.Next = 0;
     end;
    
     // Gets a random greeting.
