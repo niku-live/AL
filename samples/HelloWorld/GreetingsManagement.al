@@ -67,6 +67,7 @@ codeunit 70051100 GreetingsManagement
         AddGreetingToList('Tamil', 'வணக்கம்');
         AddGreetingToList('Sinhalese', 'ආයුබෝවන්');
         AddGreetingToList('Swahili', 'Salamu, Dunia');
+        AddGreetingToList('Catalan', 'Hola món');
         AdditionalGreetingItem.Reset;
         if AdditionalGreetingItem.FindSet(false, false) then
           repeat
