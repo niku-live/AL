@@ -1,10 +1,10 @@
-// ------------------------------------------------------------------------------------------------
+﻿// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved. 
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 // ------------------------------------------------------------------------------------------------
 
 // Codeunit for creating random greetings
-codeunit 70051100 GreetingsManagement
+codeunit 50110 GreetingsManagement
 {
     var
         GreetingsList: Record "Greeting Item" Temporary;
@@ -68,6 +68,8 @@ codeunit 70051100 GreetingsManagement
         AddGreetingToList('Sinhalese', 'ආයුබෝවන්');
         AddGreetingToList('Swahili', 'Salamu, Dunia');
         AddGreetingToList('Catalan', 'Hola món');
+        AddGreetingToList('Icelandic', 'Halló heimur');
+        AddGreetingToList('Gaeilge', 'Dia duit an domhan');
         AdditionalGreetingItem.Reset;
         if AdditionalGreetingItem.FindSet(false, false) then
           repeat
